@@ -36,8 +36,11 @@ public class Main {
 
                 Titulo tituloConvertido = ConversaoDeJSON.converterJsonEmTitulo(json);
 
+                listaDeTitulos.add(tituloConvertido);
             } catch (ErroDeCriacaoDeTituloException e){
                 System.out.println(e.getMensagem());
+            } catch (NumberFormatException e){
+                System.out.println(e.getMessage());
             }
         }
 
