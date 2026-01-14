@@ -1,3 +1,5 @@
+import br.com.alura.excecoes.ErroDeCriacaoDeTituloException;
+import br.com.alura.modelos.ConversaoDeJSON;
 import br.com.alura.modelos.Titulo;
 
 import com.google.gson.FieldNamingPolicy;
@@ -28,9 +30,15 @@ public class Main {
             if (buscaDeFilme.equalsIgnoreCase("sair")) {
                 break;
             }
-            String json = buscarJsonDoFilme(buscaDeFilme);
-            System.out.println(json);
+            try {
+                String json = buscarJsonDoFilme(buscaDeFilme);
+                System.out.println(json);
 
+                Titulo tituloConvertido = ConversaoDeJSON.converterJsonEmTitulo(json);
+
+            } catch (ErroDeCriacaoDeTituloException e){
+                System.out.println(e.getMensagem());
+            }
         }
 
         System.out.println(listaDeTitulos);
