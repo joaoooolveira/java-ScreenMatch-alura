@@ -2,10 +2,10 @@ import br.com.alura.excecoes.ErroDeCriacaoDeTituloException;
 import br.com.alura.modelos.ConversaoDeJSON;
 import br.com.alura.modelos.Titulo;
 
+import br.com.alura.modelos.TransformarListaEmArquivo;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import java.net.URI;
@@ -45,9 +45,7 @@ public class Main {
         }
 
         System.out.println(listaDeTitulos);
-        FileWriter escrita = new FileWriter("filmes.json");
-        escrita.write(gson.toJson(listaDeTitulos));
-        escrita.close();
+        TransformarListaEmArquivo.listaParaArquivo(listaDeTitulos, gson);
     }
 
     private static String buscarJsonDoFilme(String nomeDoTitulo)
